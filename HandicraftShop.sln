@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F37C7A8D-2629-4D40-ADEC-A7FAE6D00A2F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CatalogService", "CatalogService", "{62389E4F-70F5-4A77-9B5A-0796891C5E24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandicraftShop.Catalog.Domain", "src\CatalogService\HandicraftShop.Catalog.Domain\HandicraftShop.Catalog.Domain.csproj", "{76849D5C-ABE6-4C94-9865-EC7235BE26CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandicraftShop.Catalog.Infrastructure", "src\CatalogService\HandicraftShop.Catalog.Infrastructure\HandicraftShop.Catalog.Infrastructure.csproj", "{4B216623-516D-41D1-B6A7-C783F4126CBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandicraftShop.Catalog.API", "src\CatalogService\HandicraftShop.Catalog.API\HandicraftShop.Catalog.API.csproj", "{1B4113E1-DC9E-4010-980F-12B9785EE061}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{76849D5C-ABE6-4C94-9865-EC7235BE26CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76849D5C-ABE6-4C94-9865-EC7235BE26CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76849D5C-ABE6-4C94-9865-EC7235BE26CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76849D5C-ABE6-4C94-9865-EC7235BE26CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B216623-516D-41D1-B6A7-C783F4126CBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B216623-516D-41D1-B6A7-C783F4126CBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B216623-516D-41D1-B6A7-C783F4126CBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B216623-516D-41D1-B6A7-C783F4126CBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B4113E1-DC9E-4010-980F-12B9785EE061}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B4113E1-DC9E-4010-980F-12B9785EE061}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B4113E1-DC9E-4010-980F-12B9785EE061}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B4113E1-DC9E-4010-980F-12B9785EE061}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{62389E4F-70F5-4A77-9B5A-0796891C5E24} = {F37C7A8D-2629-4D40-ADEC-A7FAE6D00A2F}
+		{76849D5C-ABE6-4C94-9865-EC7235BE26CB} = {62389E4F-70F5-4A77-9B5A-0796891C5E24}
+		{4B216623-516D-41D1-B6A7-C783F4126CBC} = {62389E4F-70F5-4A77-9B5A-0796891C5E24}
+		{1B4113E1-DC9E-4010-980F-12B9785EE061} = {62389E4F-70F5-4A77-9B5A-0796891C5E24}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DD97CE5D-2B1A-4D6A-AB2F-ACE089D2A1D3}
+	EndGlobalSection
+EndGlobal

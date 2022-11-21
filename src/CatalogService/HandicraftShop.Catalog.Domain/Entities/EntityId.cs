@@ -4,5 +4,5 @@
 public class EntityId<T>
 {
     /// <summary> Identifier </summary>
-    public T Id { get; set; }
+    public T Id { get; set; } = default!;
 }

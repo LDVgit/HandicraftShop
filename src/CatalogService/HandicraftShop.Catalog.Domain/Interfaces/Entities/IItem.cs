@@ -2,9 +2,8 @@
 
 using Domain.Entities;
 
-public interface IItem
+public interface IItem : IBaseEntity
 {
-    Guid Id { get; set; }
     string VendorCode { get; set; }
     string Name { get; set; }
     Guid? MainImageId { get; set; }
@@ -12,7 +11,6 @@ public interface IItem
     decimal Price { get; set; }
     decimal? OldPrice { get; set; }
     string Description { get; set; }
-    public DateTimeOffset CreateDate { get; set; }
     public DateTimeOffset? LastModifiedDate { get; set; }
     ICollection<Image> Images { get; set; }
 }

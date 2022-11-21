@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandicraftShop.Catalog.Infr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandicraftShop.Catalog.API", "src\CatalogService\HandicraftShop.Catalog.API\HandicraftShop.Catalog.API.csproj", "{1B4113E1-DC9E-4010-980F-12B9785EE061}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandicraftShop.Extensions", "src\CatalogService\HandicraftShop.Extensions\HandicraftShop.Extensions.csproj", "{EFB0252A-54DD-4F5A-A044-383F93B468B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{1B4113E1-DC9E-4010-980F-12B9785EE061}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B4113E1-DC9E-4010-980F-12B9785EE061}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B4113E1-DC9E-4010-980F-12B9785EE061}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFB0252A-54DD-4F5A-A044-383F93B468B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFB0252A-54DD-4F5A-A044-383F93B468B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFB0252A-54DD-4F5A-A044-383F93B468B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFB0252A-54DD-4F5A-A044-383F93B468B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -40,6 +46,7 @@ Global
 		{76849D5C-ABE6-4C94-9865-EC7235BE26CB} = {62389E4F-70F5-4A77-9B5A-0796891C5E24}
 		{4B216623-516D-41D1-B6A7-C783F4126CBC} = {62389E4F-70F5-4A77-9B5A-0796891C5E24}
 		{1B4113E1-DC9E-4010-980F-12B9785EE061} = {62389E4F-70F5-4A77-9B5A-0796891C5E24}
+		{EFB0252A-54DD-4F5A-A044-383F93B468B5} = {F37C7A8D-2629-4D40-ADEC-A7FAE6D00A2F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DD97CE5D-2B1A-4D6A-AB2F-ACE089D2A1D3}

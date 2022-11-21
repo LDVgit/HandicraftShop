@@ -11,9 +11,11 @@ try
     var builder = WebApplication.CreateBuilder(args);
     builder.Host.UseSerilogHostBuilder();
 
+    var services = builder.Services;
+
     // Add services to the container.
-    builder.Services.AddControllers();
-    builder.Services.AddEndpointsApiExplorer();
+    services.AddControllers();
+    services.AddEndpointsApiExplorer();
 
     var configurations = builder.Configuration;
     var devOptions = configurations.GetSection("DevOptions").Get<DevOptions>();
@@ -29,9 +31,10 @@ try
                 .AllowAnyHeader()
                 .AllowAnyOrigin());
         });
-    builder.Services.AddInfrastructure(configurations);
+    services.AddInfrastructure(configurations);
 
     var app = builder.Build();
+
 
     // Configure the HTTP request pipeline.
     if (devOptions.EnableSwagger)

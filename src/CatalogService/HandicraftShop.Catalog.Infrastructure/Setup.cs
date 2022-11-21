@@ -1,12 +1,10 @@
 ﻿namespace HandicraftShop.Catalog.Infrastructure;
 
-using DataAccess;
 using DataAccess.Repositories;
 using Domain.Interfaces.Entities;
+using HandicraftShop.Catalog.Infrastructure.Mappings;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Serilog;
 
 public static class Setup
 {
@@ -20,6 +18,8 @@ public static class Setup
         this IServiceCollection services,
         IConfiguration configuration)
     {
+        services.AddRepositories();
+        services.AddDataMappers();
         return services;
     }
 
@@ -30,6 +30,13 @@ public static class Setup
     /// <returns> Service Collection. </returns>
     private static IServiceCollection AddRepositories(this IServiceCollection services)
     {
-        return services.AddScoped<IMascotRepository, MascotRepository>();
+        services.AddScoped<IMascotRepository, MascotRepository>();
+        return services;
+    }
+
+    private static IServiceCollection AddDataMappers(this IServiceCollection services)
+    {
+        services.AddSingleton<IDataMapper, MascotMapper>();
+        return services;
     }
 }

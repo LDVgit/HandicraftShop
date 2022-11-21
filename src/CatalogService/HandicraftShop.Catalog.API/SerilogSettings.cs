@@ -8,6 +8,7 @@ using ILogger = Serilog.ILogger;
 
 namespace HandicraftShop.Catalog.API;
 
+/// <summary> Serilog Settings </summary>
 public static class SerilogSettings
 {
     /// <summary>

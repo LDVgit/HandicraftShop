@@ -2,8 +2,8 @@
 
 using System.Linq.Expressions;
 using Domain.Entities;
-using Domain.Interfaces.Entities;
-using HandicraftShop.Catalog.Domain.Interfaces.Repositories;
+using HandicraftShop.Catalog.DataAccess;
+using HandicraftShop.Catalog.DataAccess.Repositories;
 using MongoDB.Driver;
 
 /// <summary> Implementation IRepository for MongoDb. </summary>
@@ -24,7 +24,7 @@ public class MongoRepository<T> : IRepository<T> where T : EntityId<Guid>
     /// <remarks>
     /// LowLevelFunc without awaiting. Use it with await! 
     /// </remarks>
-    public Task<T> GetByIdAsync(Guid id, CancellationToken ct)
+    public Task<T> GetByIdAsync(Guid id, CancellationToken ct = default(CancellationToken))
     {
         return _collection.Find(e => e.Id == id).SingleOrDefaultAsync(ct);
     }
@@ -34,7 +34,7 @@ public class MongoRepository<T> : IRepository<T> where T : EntityId<Guid>
     /// </summary>
     /// <returns>Collection of entities</returns>
     /// <param name="ct">CancellationToken</param>
-    public Task<List<T>> GetAllAsync(CancellationToken ct)
+    public Task<List<T>> GetAllAsync(CancellationToken ct = default(CancellationToken))
     {
         return _collection.Find(_ => true).ToListAsync(ct);
     }
@@ -44,7 +44,7 @@ public class MongoRepository<T> : IRepository<T> where T : EntityId<Guid>
     /// </summary>
     /// <param name="entity">Entity</param>
     /// <param name="ct">CancellationToken</param>
-    public virtual async Task<T> InsertAsync(T entity, CancellationToken ct)
+    public virtual async Task<T> InsertAsync(T entity, CancellationToken ct = default(CancellationToken))
     {
         await _collection.InsertOneAsync(entity, null, ct);
         return entity;
@@ -55,7 +55,7 @@ public class MongoRepository<T> : IRepository<T> where T : EntityId<Guid>
     /// </summary>
     /// <param name="entities">Entities</param>
     /// <param name="ct">CancellationToken</param>
-    public virtual async Task InsertManyAsync(IEnumerable<T> entities, CancellationToken ct)
+    public virtual async Task InsertManyAsync(IEnumerable<T> entities, CancellationToken ct = default(CancellationToken))
     {
         await _collection.InsertManyAsync(entities, null, ct);
     }
@@ -66,7 +66,7 @@ public class MongoRepository<T> : IRepository<T> where T : EntityId<Guid>
     /// <param name="entities">Entities</param>
     /// <param name="ct">CancellationToken</param>
     /// <returns>Collection of entities</returns>
-    public virtual async Task<IEnumerable<T>> InsertAsync(IEnumerable<T> entities, CancellationToken ct)
+    public virtual async Task<IEnumerable<T>> InsertAsync(IEnumerable<T> entities, CancellationToken ct = default(CancellationToken))
     {
         await _collection.InsertManyAsync(entities, null, ct);
         return entities;
@@ -90,13 +90,14 @@ public class MongoRepository<T> : IRepository<T> where T : EntityId<Guid>
     /// <summary>
     /// Updates a single entity.
     /// </summary>
-    /// <param name="filterexpression"></param>
-    /// <param name="updateBuilder"></param>
+    /// <param name="filterexpression"> Filter for selection entity. Filter like where from linq </param>
+    /// <param name="updateBuilder"> Update params. </param>
+    /// <param name="ct">CancellationToken</param>
     /// <returns></returns>
-    public async Task UpdateOneAsync(Expression<Func<T, bool>> filterexpression, UpdateBuilder<T> updateBuilder)
+    public async Task UpdateOneAsync(Expression<Func<T, bool>> filterexpression, UpdateBuilder<T> updateBuilder, CancellationToken ct = default(CancellationToken))
     {           
         var update = Builders<T>.Update.Combine(updateBuilder.Fields);
-        await _collection.UpdateOneAsync(filterexpression, update);
+        await _collection.UpdateOneAsync(filterexpression, update, null, ct);
     }
 
     /// <summary>
@@ -106,13 +107,38 @@ public class MongoRepository<T> : IRepository<T> where T : EntityId<Guid>
     /// <param name="id">Ident record</param>
     /// <param name="expression">Linq Expression</param>
     /// <param name="value">value</param>
-    public async Task UpdateField<TU>(Guid id, Expression<Func<T, TU>> expression, TU value)
+    /// <param name="ct">CancellationToken</param>
+    public async Task UpdateField<TU>(Guid id, Expression<Func<T, TU>> expression, TU value, CancellationToken ct = default(CancellationToken))
     {
         var builder = Builders<T>.Filter;
         var filter = builder.Eq(x => x.Id, id);
         var update = Builders<T>.Update
             .Set(expression, value);
 
-        await _collection.UpdateOneAsync(filter, update);
+        await _collection.UpdateOneAsync(filter, update, null, ct);
+    }
+
+    /// <summary>
+    /// Updates a many entities by expression.
+    /// </summary>
+    /// <param name="filterexpression">Filter like where from linq</param>
+    /// <param name="updateBuilder"> Update params. </param>
+    /// <param name="ct">CancellationToken</param>
+    /// <returns></returns>
+    public async Task UpdateManyAsync(Expression<Func<T, bool>> filterexpression, UpdateBuilder<T> updateBuilder, CancellationToken ct = default(CancellationToken))
+    {
+        var update = Builders<T>.Update.Combine(updateBuilder.Fields);
+        await _collection.UpdateManyAsync(filterexpression, update, null, ct);
+    }
+
+    /// <summary>
+    /// Async Delete entity
+    /// </summary>
+    /// <param name="entity">Entity</param>
+    /// <param name="ct">CancellationToken</param>
+    public async Task<T> DeleteAsync(T entity, CancellationToken ct = default(CancellationToken))
+    {
+        await _collection.DeleteOneAsync(e => e.Id == entity.Id, ct);
+        return entity;
     }
 }

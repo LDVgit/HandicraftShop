@@ -1,7 +1,5 @@
 ﻿namespace HandicraftShop.Catalog.Infrastructure;
 
-using DataAccess.Repositories;
-using Domain.Interfaces.Entities;
 using HandicraftShop.Catalog.Infrastructure.Mappings;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,7 +28,6 @@ public static class Setup
     /// <returns> Service Collection. </returns>
     private static IServiceCollection AddRepositories(this IServiceCollection services)
     {
-        services.AddScoped<IMascotRepository, MascotRepository>();
         return services;
     }
 

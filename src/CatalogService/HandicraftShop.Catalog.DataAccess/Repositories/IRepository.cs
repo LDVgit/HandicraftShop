@@ -1,6 +1,6 @@
-﻿namespace HandicraftShop.Catalog.Domain.Interfaces.Repositories;
+﻿namespace HandicraftShop.Catalog.DataAccess.Repositories;
 
-using Domain.Entities;
+using HandicraftShop.Catalog.Domain.Entities;
 
 /// <summary>
 /// Mascot data access - repository

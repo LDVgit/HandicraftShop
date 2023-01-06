@@ -5,12 +5,13 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 
-/// <summary>
-/// 
-/// </summary>
+/// <summary> Base mapper class </summary>
 public abstract class BaseItemMapper<TItem> : IDataMapper
     where TItem : EntityId<Guid>
 {
+    /// <summary>
+    /// Registration call.
+    /// </summary>
     public void RegisterCLassMap()
     {
         BsonClassMap.RegisterClassMap<TItem>(
@@ -22,5 +23,8 @@ public abstract class BaseItemMapper<TItem> : IDataMapper
             });
     }
 
+    /// <summary>
+    /// Change entity property name 
+    /// </summary>
     protected abstract void ChangeAutoMap(BsonClassMap<TItem> map);
 }

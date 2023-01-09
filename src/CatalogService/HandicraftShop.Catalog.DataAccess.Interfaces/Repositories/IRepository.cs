@@ -1,4 +1,4 @@
-﻿namespace HandicraftShop.Catalog.DataAccess.Repositories;
+﻿namespace HandicraftShop.Catalog.DataAccess.Interfaces.Repositories;
 
 using HandicraftShop.Catalog.Domain.Entities;
 

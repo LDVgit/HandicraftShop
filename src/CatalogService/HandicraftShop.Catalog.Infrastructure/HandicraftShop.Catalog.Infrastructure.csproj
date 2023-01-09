@@ -13,7 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\HandicraftShop.Catalog.DataAccess\HandicraftShop.Catalog.DataAccess.csproj" />
+      <ProjectReference Include="..\HandicraftShop.Catalog.DataAccess.Interfaces\HandicraftShop.Catalog.DataAccess.Interfaces.csproj" />
       <ProjectReference Include="..\HandicraftShop.Catalog.Domain\HandicraftShop.Catalog.Domain.csproj" />
       <ProjectReference Include="..\HandicraftShop.Extensions\HandicraftShop.Extensions.csproj" />
     </ItemGroup>

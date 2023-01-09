@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandicraftShop.Catalog.API"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandicraftShop.Extensions", "src\CatalogService\HandicraftShop.Extensions\HandicraftShop.Extensions.csproj", "{EFB0252A-54DD-4F5A-A044-383F93B468B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandicraftShop.Catalog.DataAccess", "src\CatalogService\HandicraftShop.Catalog.DataAccess\HandicraftShop.Catalog.DataAccess.csproj", "{C89EBB93-4E7B-4CD0-8685-A2D4D30DE1CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandicraftShop.Catalog.DataAccess.Interfaces", "src\CatalogService\HandicraftShop.Catalog.DataAccess.Interfaces\HandicraftShop.Catalog.DataAccess.Interfaces.csproj", "{C89EBB93-4E7B-4CD0-8685-A2D4D30DE1CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

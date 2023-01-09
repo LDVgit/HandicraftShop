@@ -2,8 +2,9 @@
 
 using System.Linq.Expressions;
 using Domain.Entities;
-using HandicraftShop.Catalog.DataAccess;
-using HandicraftShop.Catalog.DataAccess.Repositories;
+using HandicraftShop.Catalog.DataAccess.Interfaces;
+using HandicraftShop.Catalog.DataAccess.Interfaces.Repositories;
+using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
 /// <summary> Implementation IRepository for MongoDb. </summary>
@@ -14,6 +15,15 @@ public class MongoRepository<T> : IRepository<T> where T : EntityId<Guid>
 
     /// <summary> Gets the collection </summary>
     private IMongoCollection<T> _collection;
+
+    /// <summary> MongoDb Options </summary>
+    private readonly MongoOptions _mongoOptions;
+    public MongoRepository(
+        IOptionsMonitor<MongoOptions> mongoOptions)
+    {
+        _mongoOptions = mongoOptions.CurrentValue;
+        CreateConnection(_mongoOptions);
+    }
 
     /// <summary>
     /// Get entity by identifier
@@ -140,5 +150,18 @@ public class MongoRepository<T> : IRepository<T> where T : EntityId<Guid>
     {
         await _collection.DeleteOneAsync(e => e.Id == entity.Id, ct);
         return entity;
+    }
+
+    /// <summary> Create connection </summary>
+    /// <param name="mongoOptions"> MongoDb options </param>
+    private void CreateConnection(MongoOptions mongoOptions)
+    {
+        if (string.IsNullOrEmpty(_mongoOptions.ConnectionString))
+            throw new NullReferenceException("Bad Connection String");
+
+        var client = new MongoClient(mongoOptions.ConnectionString);
+        var databaseName = new MongoUrl(mongoOptions.ConnectionString).DatabaseName;
+        _database = client.GetDatabase(databaseName);
+        _collection = _database.GetCollection<T>(typeof(T).Name);
     }
 }

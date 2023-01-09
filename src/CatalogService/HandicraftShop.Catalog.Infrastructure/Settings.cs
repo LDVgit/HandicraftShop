@@ -2,6 +2,7 @@
 
 using HandicraftShop.Catalog.Infrastructure.Mappings;
 using HandicraftShop.Extensions;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 internal static class CreateMaps
@@ -21,5 +22,15 @@ internal static class CreateMaps
         {
             x.RegisterCLassMap();
         });
+    }
+
+    /// <summary>
+    /// Add db setting to dependency injection service container.
+    /// </summary>
+    /// <param name="services">Service Collection.</param>
+    /// <param name="configuration">Configuration.</param>
+    internal static void AddMongoOptions(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.Configure<MongoOptions>(configuration.GetSection(MongoOptions.MongoDbSettings));
     }
 }

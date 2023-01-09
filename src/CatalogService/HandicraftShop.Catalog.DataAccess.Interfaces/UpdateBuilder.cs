@@ -1,4 +1,4 @@
-﻿namespace HandicraftShop.Catalog.DataAccess;
+﻿namespace HandicraftShop.Catalog.DataAccess.Interfaces;
 
 using System.Linq.Expressions;
 using MongoDB.Driver;

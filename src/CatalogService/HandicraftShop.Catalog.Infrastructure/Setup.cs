@@ -16,6 +16,7 @@ public static class Setup
         this IServiceCollection services,
         IConfiguration configuration)
     {
+        services.AddMongoOptions(configuration);
         services.AddRepositories();
         services.AddDataMappers();
         return services;
